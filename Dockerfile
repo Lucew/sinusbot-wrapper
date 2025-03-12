@@ -11,6 +11,7 @@ RUN apt-get install -y libglib2.0-0
 RUN adduser --disabled-login sinusbot
 RUN apt-get install python3 python3-pip -y
 RUN apt-get install python-is-python3
+RUN apt-get install -y dos2unix
 
 # get wget to download stuff
 RUN apt-get install -y wget
@@ -52,11 +53,14 @@ RUN chmod 755 sinusbot
 
 # copy the cookies
 COPY --chown=sinusbot ./cookies.txt /opt/sinusbot/
+RUN dos2unix ./cookies.txt
 
 # install the wrapper
 COPY --chown=sinusbot ./yt-dlp-wrapper.py ./
-RUN chmod +x ./yt-dlp-wrapper.py
+RUN dos2unix ./yt-dlp-wrapper.py
+RUN chmod +x /opt/sinusbot/yt-dlp-wrapper.py
+ENV PATH=$PATH:/opt/sinusbot/yt-dlp-wrapper.py
 # ENV PATH=/opt/sinusbot/yt-dlp-wrapper.py:$PATH
-# RUN ./yt-dlp-wrapper.py asd
+RUN /opt/sinusbot/yt-dlp-wrapper.py asd
 
 CMD ["./sinusbot", "--override-password=newpassword"]

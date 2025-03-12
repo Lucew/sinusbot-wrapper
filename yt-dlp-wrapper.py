@@ -6,5 +6,4 @@ import subprocess
 args = sys.argv
 
 # run the yt-dlp command but add the cookies
-print(args[1:])
 subprocess.run([r"/opt/sinusbot/yt-dlp", "--cookies", "/opt/sinusbot/cookies.txt", *args[1:]])
