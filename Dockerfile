@@ -37,7 +37,7 @@ RUN chmod 755 yt-dlp
 
 # set the command line path
 RUN echo 'YoutubeDLPath = "/opt/sinusbot/yt-dlp-wrapper.py"' >> config.ini
-RUN /opt/sinusbot/yt-dlp --cookies cookies.txt https://www.youtube.com/watch?v=GI6CfKcMhjY&ab_channel=thelonelyisland
+RUN /opt/sinusbot/yt-dlp --cookies /opt/sinusbot/cookies.txt https://www.youtube.com/watch?v=GI6CfKcMhjY&ab_channel=thelonelyisland
 
 # set the current/supported TS3 version here
 ARG VERSION="3.5.2"
@@ -63,4 +63,10 @@ ENV PATH=$PATH:/opt/sinusbot/yt-dlp-wrapper.py
 # ENV PATH=/opt/sinusbot/yt-dlp-wrapper.py:$PATH
 RUN /opt/sinusbot/yt-dlp-wrapper.py asd
 
+# update youtoube downloader
+RUN ./yt-dlp -U
+
 CMD ["./sinusbot", "--override-password=newpassword"]
+
+# https://unix.stackexchange.com/a/742448
+#
