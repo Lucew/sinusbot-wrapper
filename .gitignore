@@ -188,3 +188,7 @@ fabric.properties
 # folders starting with csv_
 csv_*/
 test/
+
+# ignore the scripts and the data folder used by sinusbot
+scripts/
+data/

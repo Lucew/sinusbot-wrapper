@@ -30,7 +30,7 @@ chmod -R a+rw ./scripts
 ```
 
 ```bash
-docker run -d -p 8087:8087 -v ./scripts:/opt/sinusbot/scripts -v ./data:/opt/sinusbot/data --name sinusbot sinusbot
+docker run -d -p 8087:8087 -v ./scripts:/opt/sinusbot/scripts -v ./data:/opt/sinusbot/data -v ./yt-dlp-files:opt/sinusbot/yt-dlp-files:ro --name sinusbot sinusbot
 ```
 
 ```bash
@@ -43,6 +43,14 @@ docker build -t sinusbot .
 
 https://forum.sinusbot.com/threads/the-bot-does-not-listen-to-my-commands.8239/
 
+Sometimes, when developing on windows you have to call dos2unix on the files you create on windows. Otherwise linux
+and especially linux in docker will not find or correctly run the files.!
 
+You can mititgate this:
+https://docs.github.com/en/get-started/git-basics/configuring-git-to-handle-line-endings
+https://stackoverflow.com/a/71674232
+
+```bash
 find . -type f -print0 | xargs -0 dos2unix
+```
 Will recursively find all files inside current directory and call for these files dos2unix command
