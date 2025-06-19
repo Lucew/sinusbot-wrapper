@@ -30,7 +30,7 @@ chmod -R a+rw ./scripts
 ```
 
 ```bash
-docker run -d -p 8087:8087 -v ./scripts:/opt/sinusbot/scripts -v ./data:/opt/sinusbot/data -v ./yt-dlp-files:opt/sinusbot/yt-dlp-files:ro --name sinusbot sinusbot
+docker run -d -p 8087:8087 -v ./scripts:/opt/sinusbot/scripts -v ./data:/opt/sinusbot/data -v ./yt-dlp-files:/opt/sinusbot/yt-dlp-files:ro --name sinusbot sinusbot
 ```
 
 ```bash
@@ -49,6 +49,11 @@ and especially linux in docker will not find or correctly run the files.!
 You can mititgate this:
 https://docs.github.com/en/get-started/git-basics/configuring-git-to-handle-line-endings
 https://stackoverflow.com/a/71674232
+
+The data/ folder and scripts/ folder have to be owned by user id 1000
+```bash
+chown -R 1000:1000 /data
+```
 
 ```bash
 find . -type f -print0 | xargs -0 dos2unix
