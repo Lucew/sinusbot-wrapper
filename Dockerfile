@@ -28,6 +28,11 @@ RUN mkdir -p /opt/sinusbot
 # grant sinusbot user permissions on specified folder
 RUN chown -R sinusbot:sinusbot /opt/sinusbot
 
+# copy the shell script into the container and make it executable
+COPY yt-dlp-files/shell-yt-dlp-wrapper.sh /opt/sinusbot/
+RUN sudo chown $(whoami):$(whoami) shell-yt-dlp-wrapper.sh
+RUN chmod 0755 /opt/sinusbot/shell-yt-dlp-wrapper.sh
+
 # change the user and switch to our working directory for the rest
 USER sinusbot
 WORKDIR /opt/sinusbot
@@ -62,10 +67,5 @@ RUN rm TeamSpeak3-Client-linux_amd64-$VERSION.run
 RUN rm TeamSpeak3-Client-linux_amd64/xcbglintegrations/libqxcb-glx-integration.so
 RUN mkdir TeamSpeak3-Client-linux_amd64/plugins
 RUN cp plugin/libsoundbot_plugin.so TeamSpeak3-Client-linux_amd64/plugins/
-
-# copy the shell script into the container and make it executable
-COPY yt-dlp-files/shell-yt-dlp-wrapper.sh /opt/sinusbot/
-RUN sudo chown $(whoami):$(whoami) shell-yt-dlp-wrapper.sh
-RUN chmod 0755 /opt/sinusbot/shell-yt-dlp-wrapper.sh
 
 CMD ["./sinusbot", "--override-password=newpassword"]
