@@ -30,7 +30,7 @@ RUN chown -R sinusbot:sinusbot /opt/sinusbot
 
 # copy the shell script into the container and make it executable
 COPY yt-dlp-files/shell-yt-dlp-wrapper.sh /opt/sinusbot/
-RUN chown $(whoami):$(whoami) shell-yt-dlp-wrapper.sh
+RUN chown $(whoami):$(whoami) /opt/sinusbot/shell-yt-dlp-wrapper.sh
 RUN chmod 0755 /opt/sinusbot/shell-yt-dlp-wrapper.sh
 
 # change the user and switch to our working directory for the rest
