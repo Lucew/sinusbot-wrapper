@@ -28,6 +28,7 @@ RUN mkdir -p /opt/sinusbot
 # grant sinusbot user permissions on specified folder
 RUN chown -R sinusbot:sinusbot /opt/sinusbot
 RUN chown -R sinusbot:sinusbot /opt/sinusbot/yt-dlp-files
+RUN chown -R sinusbot:sinusbot /opt/sinusbot/yt-dlp-files/cookies.txt
 
 # copy the shell script into the container and make it executable
 COPY yt-dlp-files/shell-yt-dlp-wrapper.sh /opt/sinusbot/
