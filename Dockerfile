@@ -65,6 +65,6 @@ RUN cp plugin/libsoundbot_plugin.so TeamSpeak3-Client-linux_amd64/plugins/
 
 # copy the shell script into the container and make it executable
 COPY yt-dlp-files/shell-yt-dlp-wrapper.sh /opt/sinusbot/shell-yt-dlp-wrapper.sh
-RUN chmod 0755 shell-yt-dlp-wrapper.sh
+RUN chmod 0755 /opt/sinusbot/shell-yt-dlp-wrapper.sh
 
 CMD ["./sinusbot", "--override-password=newpassword"]
