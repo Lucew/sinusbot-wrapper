@@ -4,8 +4,15 @@ import os
 import subprocess
 import logging
 
+# check whether we can access the file
+folder = "/opt/sinusbot/logs"
+if os.path.isdir(folder):
+    log_file = f"{folder}/yt-dlp.log"
+else:
+    print('!Logging in Container!')
+    log_file = f"yt-dlp.log"
+
 # Configure the logging
-log_file = "/opt/sinusbot/logs/yt-dlp.log"
 logging.basicConfig(
     filename=log_file,
     level=logging.INFO,
