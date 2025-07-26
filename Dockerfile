@@ -51,9 +51,6 @@ RUN chmod 755 yt-dlp
 # update youtoube downloader
 RUN ./yt-dlp -U
 
-# set the command line path so sinusbot knows which file to use
-RUN echo 'YoutubeDLPath = "/opt/sinusbot/yt-dlp-wrapper.py"' >> config.ini
-
 # set the current/supported TS3 version here
 ARG VERSION="3.5.2"
 
@@ -66,10 +63,13 @@ RUN rm TeamSpeak3-Client-linux_amd64/xcbglintegrations/libqxcb-glx-integration.s
 RUN mkdir TeamSpeak3-Client-linux_amd64/plugins
 RUN cp plugin/libsoundbot_plugin.so TeamSpeak3-Client-linux_amd64/plugins/
 
+# set the command line path so sinusbot knows which file to use
+RUN echo 'YoutubeDLPath = "yt-dlp-wrapper"' >> config.ini
+
 # install the wrapper
-COPY --chown=sinusbot ./yt-dlp-wrapper.py ./
-RUN dos2unix ./yt-dlp-wrapper.py
-RUN chmod +x /opt/sinusbot/yt-dlp-wrapper.py
+COPY --chown=sinusbot ./yt-dlp-wrapper.py ./yt-dlp-wrapper
+RUN dos2unix ./yt-dlp-wrapper
+RUN chmod +x /opt/sinusbot/yt-dlp-wrapper
 ENV PATH=$PATH:/opt/sinusbot
 
 CMD ["./sinusbot", "--override-password=newpassword"]
