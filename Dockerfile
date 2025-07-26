@@ -64,12 +64,12 @@ RUN mkdir TeamSpeak3-Client-linux_amd64/plugins
 RUN cp plugin/libsoundbot_plugin.so TeamSpeak3-Client-linux_amd64/plugins/
 
 # set the command line path so sinusbot knows which file to use
-RUN echo 'YoutubeDLPath = "yt-dlp-wrapper"' >> config.ini
+RUN echo 'YoutubeDLPath = "/opt/sinusbot/yt-dlp-wrapper"' >> config.ini
 
 # install the wrapper
 COPY --chown=sinusbot ./yt-dlp-wrapper.py ./yt-dlp-wrapper
 RUN dos2unix ./yt-dlp-wrapper
-RUN chmod +x /opt/sinusbot/yt-dlp-wrapper
+RUN chmod a+rx /opt/sinusbot/yt-dlp-wrapper
 ENV PATH=$PATH:/opt/sinusbot
 
 CMD ["./sinusbot", "--override-password=newpassword"]
