@@ -86,3 +86,6 @@ Will recursively find all files inside current directory and call for these file
 ```bash
 docker volume create logs
 ```
+
+# Install chrome
+https://askubuntu.com/a/1479315
