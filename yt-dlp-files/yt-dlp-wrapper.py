@@ -14,7 +14,7 @@ logging.basicConfig(
 )
 
 # check whether there are cookies
-cookie_path = "/opt/sinusbot/data/container-cookies.txt"
+cookie_path = "/opt/sinusbot/data/cookies.txt"
 if not os.path.isfile(cookie_path):
     with open(cookie_path, 'w'): pass
     error_msg = f"There is no cookies file in '{cookie_path}'. But I created it."
