@@ -5,7 +5,7 @@ import subprocess
 import logging
 
 # Configure the logging
-log_file = "yt-dlp.log"
+log_file = "/opt/sinusbot/logs/yt-dlp.log"
 logging.basicConfig(
     filename=log_file,
     level=logging.INFO,
