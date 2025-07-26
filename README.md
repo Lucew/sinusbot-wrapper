@@ -33,13 +33,23 @@ chmod -R a+rw ./scripts
 
 
 # How to run sinusbot docker
+Run without logs
 ```bash
 docker run -d -p 8087:8087 -v ./scripts:/opt/sinusbot/scripts -v ./data:/opt/sinusbot/data -v ./yt-dlp-files:/opt/sinusbot/yt-dlp-files:ro --name sinusbot sinusbot
 ```
 
+Create the persistent log folder
+```bash
+mkdir logs
+```
+
+```bash
+chown 1000:1000 logs
+```
+
 Run with the logs repository
 ```bash
-docker run -d -p 8087:8087 -v logs:/opt/sinusbot/logs -v ./scripts:/opt/sinusbot/scripts -v ./data:/opt/sinusbot/data -v ./yt-dlp-files:/opt/sinusbot/yt-dlp-files:ro --name sinusbot sinusbot
+docker run -d -p 8087:8087 -v ./logs:/opt/sinusbot/logs -v ./scripts:/opt/sinusbot/scripts -v ./data:/opt/sinusbot/data -v ./yt-dlp-files:/opt/sinusbot/yt-dlp-files:ro --name sinusbot sinusbot
 ```
 
 # How to access shell into the sinusbot docker
