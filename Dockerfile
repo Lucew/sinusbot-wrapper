@@ -70,6 +70,6 @@ RUN cp plugin/libsoundbot_plugin.so TeamSpeak3-Client-linux_amd64/plugins/
 COPY --chown=sinusbot ./yt-dlp-wrapper.py ./
 RUN dos2unix ./yt-dlp-wrapper.py
 RUN chmod +x /opt/sinusbot/yt-dlp-wrapper.py
-ENV PATH=$PATH:/opt/sinusbot/yt-dlp-wrapper.py
+ENV PATH=$PATH:/opt/sinusbot
 
 CMD ["./sinusbot", "--override-password=newpassword"]
