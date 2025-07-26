@@ -28,12 +28,6 @@ RUN mkdir -p /opt/sinusbot
 # grant sinusbot user permissions on specified folder
 RUN chown -R sinusbot:sinusbot /opt/sinusbot
 
-# copy the shell script into the container and make it executable
-COPY yt-dlp-wrapper.py /opt/sinusbot/yt-dlp-wrapper.py
-RUN dos2unix /opt/sinusbot/yt-dlp-wrapper.py
-RUN chown 1000:1000 /opt/sinusbot/yt-dlp-wrapper.py
-RUN chmod +x /opt/sinusbot/yt-dlp-wrapper.py
-
 # install the ffmpeg
 RUN apt-get install -y ffmpeg
 
@@ -71,5 +65,11 @@ RUN rm TeamSpeak3-Client-linux_amd64-$VERSION.run
 RUN rm TeamSpeak3-Client-linux_amd64/xcbglintegrations/libqxcb-glx-integration.so
 RUN mkdir TeamSpeak3-Client-linux_amd64/plugins
 RUN cp plugin/libsoundbot_plugin.so TeamSpeak3-Client-linux_amd64/plugins/
+
+# install the wrapper
+COPY --chown=sinusbot ./yt-dlp-wrapper.py ./
+RUN dos2unix ./yt-dlp-wrapper.py
+RUN chmod +x /opt/sinusbot/yt-dlp-wrapper.py
+ENV PATH=$PATH:/opt/sinusbot/yt-dlp-wrapper.py
 
 CMD ["./sinusbot", "--override-password=newpassword"]
