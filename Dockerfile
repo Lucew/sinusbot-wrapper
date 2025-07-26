@@ -30,6 +30,7 @@ RUN chown -R sinusbot:sinusbot /opt/sinusbot
 
 # copy the shell script into the container and make it executable
 COPY yt-dlp-wrapper.py /opt/sinusbot/yt-dlp-wrapper.py
+RUN dos2unix /opt/sinusbot/yt-dlp-wrapper.py
 RUN chown 1000:1000 /opt/sinusbot/yt-dlp-wrapper.py
 RUN chmod 755 /opt/sinusbot/yt-dlp-wrapper.py
 
