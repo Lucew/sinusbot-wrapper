@@ -30,8 +30,8 @@ RUN chown -R sinusbot:sinusbot /opt/sinusbot
 
 # copy the shell script into the container and make it executable
 COPY yt-dlp-files/shell-yt-dlp-wrapper.sh /opt/sinusbot/
-RUN chown $(whoami):$(whoami) /opt/sinusbot/shell-yt-dlp-wrapper.sh
-RUN chmod 777 /opt/sinusbot/shell-yt-dlp-wrapper.sh
+RUN chown 1000:1000 /opt/sinusbot/shell-yt-dlp-wrapper.sh
+RUN chmod 755 /opt/sinusbot/shell-yt-dlp-wrapper.sh
 
 # install the ffmpeg
 RUN apt-get install -y ffmpeg
