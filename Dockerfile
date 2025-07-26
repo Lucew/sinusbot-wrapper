@@ -33,12 +33,12 @@ COPY yt-dlp-files/shell-yt-dlp-wrapper.sh /opt/sinusbot/
 RUN chown $(whoami):$(whoami) /opt/sinusbot/shell-yt-dlp-wrapper.sh
 RUN chmod 777 /opt/sinusbot/shell-yt-dlp-wrapper.sh
 
+# install the ffmpeg
+RUN apt-get install -y ffmpeg
+
 # change the user and switch to our working directory for the rest
 USER sinusbot
 WORKDIR /opt/sinusbot
-
-# install the ffmpeg
-RUN apt-get install -y ffmpeg
 
 # donwload packaged sinusbot
 RUN wget https://www.sinusbot.com/dl/sinusbot.current.tar.bz2
