@@ -65,6 +65,7 @@ RUN cp plugin/libsoundbot_plugin.so TeamSpeak3-Client-linux_amd64/plugins/
 
 # set the command line path so sinusbot knows which file to use
 RUN echo 'YoutubeDLPath = "/opt/sinusbot/yt-dlp-wrapper"' >> config.ini
+RUN echo 'LogLevel = 10' >> config.ini
 
 # install the wrapper
 COPY --chown=sinusbot ./yt-dlp-wrapper.py ./yt-dlp-wrapper
