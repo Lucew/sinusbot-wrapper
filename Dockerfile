@@ -32,7 +32,7 @@ RUN chown -R sinusbot:sinusbot /opt/sinusbot
 COPY yt-dlp-wrapper.py /opt/sinusbot/yt-dlp-wrapper.py
 RUN dos2unix /opt/sinusbot/yt-dlp-wrapper.py
 RUN chown 1000:1000 /opt/sinusbot/yt-dlp-wrapper.py
-RUN chmod 755 /opt/sinusbot/yt-dlp-wrapper.py
+RUN chmod +x /opt/sinusbot/yt-dlp-wrapper.py
 
 # install the ffmpeg
 RUN apt-get install -y ffmpeg
