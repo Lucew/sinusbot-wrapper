@@ -89,3 +89,19 @@ docker volume create logs
 
 # Install chrome
 https://askubuntu.com/a/1479315
+
+# How to update cookies
+```bash
+google-chrome-stable --no-sandbox
+```
+
+Then go to YouTube, login, and use the browser plugin get cookies LOCALLY.
+Save the cookies from the page.
+
+Then run the shell script
+```bash
+chmod +x modify-cookies.sh
+```
+```bash
+./modify-cookies.sh
+```

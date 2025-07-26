@@ -37,6 +37,9 @@ RUN chmod 777 /opt/sinusbot/shell-yt-dlp-wrapper.sh
 USER sinusbot
 WORKDIR /opt/sinusbot
 
+# install the ffmpeg
+RUN apt-get install -y ffmpeg
+
 # donwload packaged sinusbot
 RUN wget https://www.sinusbot.com/dl/sinusbot.current.tar.bz2
 
