@@ -28,13 +28,14 @@ RUN mkdir -p /opt/sinusbot
 # grant sinusbot user permissions on specified folder
 RUN chown -R sinusbot:sinusbot /opt/sinusbot
 
+# copy the shell script into the container and make it executable
+COPY yt-dlp-files/shell-yt-dlp-wrapper.sh /opt/sinusbot/
+RUN chown $(whoami):$(whoami) /opt/sinusbot/shell-yt-dlp-wrapper.sh
+RUN chmod 777 /opt/sinusbot/shell-yt-dlp-wrapper.sh
+
 # change the user and switch to our working directory for the rest
 USER sinusbot
 WORKDIR /opt/sinusbot
-
-# copy the shell script into the container and make it executable
-COPY yt-dlp-files/shell-yt-dlp-wrapper.sh /opt/sinusbot/
-RUN chmod 755 /opt/sinusbot/shell-yt-dlp-wrapper.sh
 
 # donwload packaged sinusbot
 RUN wget https://www.sinusbot.com/dl/sinusbot.current.tar.bz2
