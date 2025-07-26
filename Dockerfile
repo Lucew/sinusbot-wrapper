@@ -74,7 +74,6 @@ RUN chmod a+rx /opt/sinusbot/yt-dlp-wrapper
 ENV PATH=$PATH:/opt/sinusbot
 ENV PATH=$PATH:/opt/sinusbot/yt-dlp-wrapper.py
 # ENV PATH=/opt/sinusbot/yt-dlp-wrapper.py:$PATH
-RUN /opt/sinusbot/yt-dlp-wrapper asd
 
 # update youtoube downloader
 RUN ./yt-dlp -U
