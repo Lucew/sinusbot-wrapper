@@ -57,7 +57,7 @@ RUN chmod 755 yt-dlp
 RUN ./yt-dlp -U
 
 # set the command line path so sinusbot knows which file to use
-RUN echo 'YoutubeDLPath = "/opt/sinusbot/shell-yt-dlp-wrapper.sh"' >> config.ini
+RUN echo 'YoutubeDLPath = "/opt/sinusbot/yt-dlp-wrapper.py"' >> config.ini
 
 # set the current/supported TS3 version here
 ARG VERSION="3.5.2"
