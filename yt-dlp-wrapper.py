@@ -25,7 +25,6 @@ cookie_path = "/opt/sinusbot/data/cookies.txt"
 if not os.path.isfile(cookie_path):
     with open(cookie_path, 'w'): pass
     error_msg = f"There is no cookies file in '{cookie_path}'. But I created it."
-    print(error_msg)
     logging.error(error_msg)
     raise FileNotFoundError(error_msg)
 
@@ -39,11 +38,12 @@ try:
 
     # Log the command and its output
     msg = f"Command ran successfully: {' '.join(command)}\nOutput:\n{result.stdout}"
-    print(msg)
     logging.info(msg)
+
+    # print the result to console so the sinusbot can discover it
+    print(result.stdout)
 
 except subprocess.CalledProcessError as e:
     # Log the error output
     msg = f"Command failed: {' '.join(command)}\nReturn code: {e.returncode}\nError Output:\n{e.stderr}"
-    print(msg)
     logging.error(msg)
