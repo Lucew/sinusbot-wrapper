@@ -72,7 +72,7 @@ COPY --chown=sinusbot ./yt-dlp-wrapper.py ./yt-dlp-wrapper
 RUN dos2unix ./yt-dlp-wrapper
 RUN chmod a+rx /opt/sinusbot/yt-dlp-wrapper
 ENV PATH=$PATH:/opt/sinusbot
-ENV PATH=$PATH:/opt/sinusbot/yt-dlp-wrapper.py
+ENV PATH=$PATH:/opt/sinusbot/yt-dlp-wrapper
 # ENV PATH=/opt/sinusbot/yt-dlp-wrapper.py:$PATH
 
 # update youtoube downloader
