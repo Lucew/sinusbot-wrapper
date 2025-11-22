@@ -49,6 +49,7 @@ if not os.path.isfile(cookie_path):
 
 # get the arguments the file is run with
 args = sys.argv
+args = [ele for ele in args if not ele.startswith('--no-call-home') or ele != '-x']
 # command = [r"/opt/sinusbot/yt-dlp", "--cookies", cookie_path, "-t", "aac", "-4", *args[1:]]
 command = [r"/opt/sinusbot/yt-dlp", "--cookies", cookie_path, "-f", '"wv+ba/b"', "-x", "--audio-format", "aac", "--audio-quality", "high", "-4", *args[1:]]
 
