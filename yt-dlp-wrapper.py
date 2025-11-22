@@ -49,7 +49,8 @@ if not os.path.isfile(cookie_path):
 
 # get the arguments the file is run with
 args = sys.argv
-command = [r"/opt/sinusbot/yt-dlp", "--cookies", cookie_path, "-t", "aac", "-4", *args[1:]]
+# command = [r"/opt/sinusbot/yt-dlp", "--cookies", cookie_path, "-t", "aac", "-4", *args[1:]]
+command = [r"/opt/sinusbot/yt-dlp", "--cookies", cookie_path, "-f", '"wv+ba/b"', "-x", "-4", *args[1:]]
 
 # run the yt-dlp command but add the cookies
 try:
