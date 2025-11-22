@@ -44,6 +44,10 @@ RUN cp config.ini.dist config.ini
 RUN rm sinusbot.current.tar.bz2
 RUN chmod 755 sinusbot
 
+# install Deno
+# https://github.com/yt-dlp/yt-dlp/issues/15012
+RUN curl -fsSL https://deno.land/install.sh | sh
+
 # install yt-dlp
 RUN curl -s -L -o yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
 RUN chmod 755 yt-dlp
