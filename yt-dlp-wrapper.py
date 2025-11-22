@@ -52,7 +52,7 @@ args = sys.argv
 args = [ele for ele in args if not ele.startswith('--no-call-home') and ele != '-x']
 logging.info(args)
 # command = [r"/opt/sinusbot/yt-dlp", "--cookies", cookie_path, "-t", "aac", "-4", *args[1:]]
-command = [r"/opt/sinusbot/yt-dlp", "--cookies", cookie_path, "--list-formats", "-t", "aac", "-x", "--audio-quality", "high", "-4", *args[1:]]
+command = [r"/opt/sinusbot/yt-dlp", "--cookies", cookie_path, "-t", "aac", "-x", "--audio-quality", "high", "-4", *args[1:]]
 
 # run the yt-dlp command but add the cookies
 try:
