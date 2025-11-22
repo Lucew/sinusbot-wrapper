@@ -31,6 +31,9 @@ RUN chown -R sinusbot:sinusbot /opt/sinusbot
 # install the ffmpeg
 RUN apt-get install -y ffmpeg
 
+# install unzip for the deno installation
+RUN apt-get install unzip
+
 # change the user and switch to our working directory for the rest
 USER sinusbot
 WORKDIR /opt/sinusbot
@@ -46,7 +49,6 @@ RUN chmod 755 sinusbot
 
 # install Deno
 # https://github.com/yt-dlp/yt-dlp/issues/15012
-RUN apt-get install unzip
 RUN curl -fsSL https://deno.land/install.sh | sh
 
 # install yt-dlp
