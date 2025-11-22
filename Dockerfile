@@ -46,6 +46,7 @@ RUN chmod 755 sinusbot
 
 # install Deno
 # https://github.com/yt-dlp/yt-dlp/issues/15012
+RUN apt-get install unzip
 RUN curl -fsSL https://deno.land/install.sh | sh
 
 # install yt-dlp
